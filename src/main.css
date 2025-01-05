@@ -1,3 +1,104 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+    background-color: #00333a;
+    color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #ff8f33;
+    font-weight: bold;
+}
+
+.playboard {
+    width: 890px;
+
+    .row {
+        display: grid;
+        grid-template-columns: repeat(15, 1fr);
+        grid-gap: 10px;
+        margin-bottom: 10px;
+
+        .item {
+            background-color: #ff8f33;
+            box-sizing: border-box;
+            transition: background-color 0.3s;
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            -webkit-filter: brightness(100%);
+            cursor: pointer;
+            position: relative;
+
+            &:hover {
+                &::after {
+                    opacity: 1;
+                }
+            }
+
+            &.center {
+                border: 2px solid rgb(255, 255, 255);
+            }
+
+            &.green {
+                background-color: #b1ff67;
+            }
+
+            &.yellow {
+                background-color: #fce066;
+            }
+
+            &.blue {
+                background-color: #5dc3ff;
+            }
+
+            &.red {
+                background-color: #b40045;
+            }
+
+            &.orange {
+                background-color: #ff8f33;
+            }
+
+            &.active {
+                &::after {
+                    opacity: 1;
+                }
+            }
+
+            &::before {
+                content: '';
+                display: block;
+                position: absolute;
+                height: 90%;
+                width: 90%;
+                border-radius: 50%;
+                top: 5%;
+                left: 5%;
+                background-color: #ffffff38;
+            }
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                height: 80%;
+                width: 80%;
+                border-radius: 50%;
+                top: 10%;
+                left: 10%;
+                background: url('/xmark-solid.svg') no-repeat center;
+                transition: .3s ease-in-out;
+                opacity: 0;
+            }
+        }
+    }
+}
